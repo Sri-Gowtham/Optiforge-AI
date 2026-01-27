@@ -1,0 +1,25 @@
+{
+    "name": "optiforge-ai",
+    "version": "1.0.0",
+    "description": "AI-Powered Product Design Optimization Platform",
+    "main": "index.js",
+    "scripts": {
+        "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+        "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+        "backend": "cd backend && npm run dev",
+        "frontend": "cd frontend && npm run dev",
+        "build": "cd frontend && npm run build",
+        "start": "cd backend && npm start"
+    },
+    "keywords": [
+        "ai",
+        "design",
+        "optimization",
+        "analysis"
+    ],
+    "author": "OptiForge AI",
+    "license": "MIT",
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
