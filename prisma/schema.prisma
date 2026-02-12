@@ -1,0 +1,74 @@
+// Prisma Schema for OptiForge AI
+// SQLite for MVP, easily scalable to PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User Model - Authentication and user management
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String    // bcrypt hashed
+  role      String    @default("user") // user, admin
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  
+  // Relations
+  projects  Project[]
+  
+  @@map("users")
+}
+
+// Project Model - User projects
+model Project {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  userId      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relations
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  designs     Design[]
+  
+  @@map("projects")
+}
+
+// Design Model - Manual and AI-generated designs
+model Design {
+  id         String    @id @default(uuid())
+  type       String    // "manual" or "ai-generated"
+  parameters String    // JSON string for design parameters
+  projectId  String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  
+  // Relations
+  project    Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  analysis   Analysis?
+  
+  @@map("designs")
+}
+
+// Analysis Model - Analysis results for designs
+model Analysis {
+  id           String    @id @default(uuid())
+  score        Float     // Overall design score
+  warnings     String    // JSON string for warnings array
+  costEstimate Float     // Estimated cost
+  designId     String    @unique
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  // Relations
+  design       Design    @relation(fields: [designId], references: [id], onDelete: Cascade)
+  
+  @@map("analyses")
+}
