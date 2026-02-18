@@ -1,5 +1,5 @@
 import { sendSuccess } from '../../utils/response.util.js';
-import * as authService from './auth.service.js';
+import * as authService from '../../services/auth.service.js';
 
 /**
  * Authentication Controller

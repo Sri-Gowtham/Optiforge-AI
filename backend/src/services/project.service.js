@@ -1,5 +1,5 @@
-import prisma from '../../config/database.js';
-import { NotFoundError, ForbiddenError } from '../../utils/errors.util.js';
+import prisma from '../config/database.js';
+import { NotFoundError, ForbiddenError } from '../utils/errors.util.js';
 
 /**
  * Project Service

@@ -1,5 +1,5 @@
 import { sendSuccess } from '../../utils/response.util.js';
-import * as designService from './design.service.js';
+import * as designService from '../../services/design.service.js';
 
 /**
  * Design Controller

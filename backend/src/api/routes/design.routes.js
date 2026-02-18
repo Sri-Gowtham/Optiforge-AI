@@ -1,5 +1,5 @@
 import express from 'express';
-import * as designController from './design.controller.js';
+import * as designController from '../controllers/design.controller.js';
 import { authenticate } from '../../middlewares/auth.middleware.js';
 
 const router = express.Router();

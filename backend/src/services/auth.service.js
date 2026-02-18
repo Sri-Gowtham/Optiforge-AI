@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import prisma from '../../config/database.js';
-import { jwtConfig } from '../../config/jwt.js';
-import { ValidationError, ConflictError, AuthError } from '../../utils/errors.util.js';
+import prisma from '../config/database.js';
+import { jwtConfig } from '../config/jwt.js';
+import { ValidationError, ConflictError, AuthError } from '../utils/errors.util.js';
 
 /**
  * Authentication Service

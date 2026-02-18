@@ -1,5 +1,5 @@
 import { sendSuccess } from '../../utils/response.util.js';
-import * as projectService from './project.service.js';
+import * as projectService from '../../services/project.service.js';
 
 /**
  * Project Controller

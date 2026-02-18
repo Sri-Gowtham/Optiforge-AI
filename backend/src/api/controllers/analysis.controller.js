@@ -1,5 +1,5 @@
 import { sendSuccess } from '../../utils/response.util.js';
-import * as analysisService from './analysis.service.js';
+import * as analysisService from '../../services/analysis.service.js';
 
 /**
  * Analysis Controller

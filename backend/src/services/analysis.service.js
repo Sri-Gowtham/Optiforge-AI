@@ -1,5 +1,5 @@
-import prisma from '../../config/database.js';
-import { NotFoundError, ValidationError } from '../../utils/errors.util.js';
+import prisma from '../config/database.js';
+import { NotFoundError, ValidationError } from '../utils/errors.util.js';
 
 /**
  * Analysis Service

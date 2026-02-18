@@ -5,10 +5,10 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 
 // Import routes
-import authRoutes from './modules/auth/auth.routes.js';
-import projectRoutes from './modules/project/project.routes.js';
-import designRoutes from './modules/design/design.routes.js';
-import analysisRoutes from './modules/analysis/analysis.routes.js';
+import authRoutes from './api/routes/auth.routes.js';
+import projectRoutes from './api/routes/project.routes.js';
+import designRoutes from './api/routes/design.routes.js';
+import analysisRoutes from './api/routes/analysis.routes.js';
 
 // Import middleware
 import { errorHandler, notFoundHandler } from './middlewares/error.middleware.js';
