@@ -20,7 +20,7 @@ const DashboardCards: React.FC<DashboardCardProps> = ({
     return (
         <Card hover className="flex items-center justify-between">
             <div>
-                <p className="text-sm text-gray-500 font-medium mb-1">{title}</p>
+                <p className="text-sm text-slate-medium font-medium mb-1">{title}</p>
                 <p className="text-3xl font-bold text-slate-dark">{value}</p>
                 {trend && (
                     <p className={`text-sm mt-2 ${trend.isPositive ? 'text-success' : 'text-warning'}`}>

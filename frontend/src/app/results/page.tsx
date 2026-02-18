@@ -55,7 +55,7 @@ export default function ResultsPage() {
                 <div className="flex justify-between items-center mb-8">
                     <div>
                         <h1 className="text-3xl font-bold text-slate-dark mb-2">Analysis Results</h1>
-                        <p className="text-gray-600">{results.projectName} • {results.analysisDate}</p>
+                        <p className="text-slate-medium">{results.projectName} • {results.analysisDate}</p>
                     </div>
                     <div className="flex space-x-3">
                         <Button variant="secondary">Download Report</Button>
@@ -69,7 +69,7 @@ export default function ResultsPage() {
                     <div className={`text-7xl font-bold ${getScoreColor(results.overallScore)} mb-2`}>
                         {results.overallScore}
                     </div>
-                    <p className="text-gray-600">out of 10</p>
+                    <p className="text-slate-medium">out of 10</p>
                 </Card>
 
                 {/* Detailed Insights */}
@@ -84,13 +84,13 @@ export default function ResultsPage() {
                             </div>
                             <div className="mb-3">
                                 <span className={`px-3 py-1 rounded-full text-xs font-semibold ${insight.score >= 8.5 ? 'bg-success text-white' :
-                                        insight.score >= 7 ? 'bg-primary text-white' :
-                                            'bg-amber text-white'
+                                    insight.score >= 7 ? 'bg-primary text-white' :
+                                        'bg-amber text-white'
                                     }`}>
                                     {insight.status}
                                 </span>
                             </div>
-                            <p className="text-gray-600 text-sm">{insight.description}</p>
+                            <p className="text-slate-medium text-sm">{insight.description}</p>
                         </Card>
                     ))}
                 </div>
@@ -102,7 +102,7 @@ export default function ResultsPage() {
                         {results.recommendations.map((recommendation, index) => (
                             <li key={index} className="flex items-start space-x-3">
                                 <span className="text-primary text-xl">→</span>
-                                <p className="text-gray-700">{recommendation}</p>
+                                <p className="text-slate-dark">{recommendation}</p>
                             </li>
                         ))}
                     </ul>

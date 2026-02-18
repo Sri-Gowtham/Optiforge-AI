@@ -32,12 +32,27 @@ export default function SignupPage() {
         setLoading(true);
 
         try {
-            // API call will be connected to backend
-            const response = await api.post('/auth/signup', {
-                name: formData.name,
-                email: formData.email,
-                password: formData.password,
-            });
+            // Use mock auth for development (when backend is not running)
+            const { mockSignup, shouldUseMockAuth } = await import('@/lib/mockAuth');
+
+            let response;
+            if (shouldUseMockAuth()) {
+                // Use mock authentication
+                const mockResponse = await mockSignup({
+                    name: formData.name,
+                    email: formData.email,
+                    password: formData.password,
+                });
+                response = { data: mockResponse };
+            } else {
+                // Use real API
+                response = await api.post('/auth/signup', {
+                    name: formData.name,
+                    email: formData.email,
+                    password: formData.password,
+                });
+            }
+
             const { token, user } = response.data;
 
             setToken(token);
@@ -59,7 +74,7 @@ export default function SignupPage() {
                     <Link href="/">
                         <h1 className="text-4xl font-bold text-primary mb-2">OptiForge AI</h1>
                     </Link>
-                    <p className="text-gray-600">Create your account</p>
+                    <p className="text-slate-medium">Create your account</p>
                 </div>
 
                 {/* Signup Form */}
@@ -119,7 +134,7 @@ export default function SignupPage() {
                     </form>
 
                     <div className="text-center mt-6">
-                        <p className="text-gray-600">
+                        <p className="text-slate-medium">
                             Already have an account?{' '}
                             <Link href="/login" className="text-primary hover:underline font-medium">
                                 Sign in
@@ -130,7 +145,7 @@ export default function SignupPage() {
 
                 {/* Back to Home */}
                 <div className="text-center mt-6">
-                    <Link href="/" className="text-gray-600 hover:text-primary">
+                    <Link href="/" className="text-slate-medium hover:text-primary">
                         ← Back to home
                     </Link>
                 </div>

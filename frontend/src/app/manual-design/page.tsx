@@ -29,7 +29,7 @@ export default function ManualDesignPage() {
                 <h1 className="text-3xl font-bold text-slate-dark mb-8">Manual Design Input</h1>
 
                 <Card>
-                    <p className="text-gray-600 mb-6">
+                    <p className="text-slate-medium mb-6">
                         Enter your product design specifications manually for analysis
                     </p>
 

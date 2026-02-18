@@ -53,7 +53,7 @@ export default function AnalysisPage() {
                     <h1 className="text-3xl font-bold text-slate-dark mb-4">
                         Analyzing Your Design
                     </h1>
-                    <p className="text-gray-600 mb-8">
+                    <p className="text-slate-medium mb-8">
                         Our AI is analyzing your design specifications. This may take a few moments.
                     </p>
 
@@ -95,7 +95,7 @@ export default function AnalysisPage() {
                                         <span className="text-xl">
                                             {isComplete ? '✅' : '⏳'}
                                         </span>
-                                        <span className={isComplete ? 'text-success font-medium' : 'text-gray-600'}>
+                                        <span className={isComplete ? 'text-success font-medium' : 'text-slate-medium'}>
                                             {step}
                                         </span>
                                     </div>

@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
         lg: 'p-8',
     };
 
-    const baseStyles = 'bg-white rounded-card shadow-md';
+    const baseStyles = 'bg-white rounded-card shadow-sm border border-gray-200';
     const hoverStyles = hover ? 'hover:shadow-lg transition-shadow duration-200' : '';
 
     return (

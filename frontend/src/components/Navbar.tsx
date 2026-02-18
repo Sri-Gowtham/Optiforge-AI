@@ -15,16 +15,16 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <div className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shadow-sm">
+        <div className="h-16 bg-primary-dark text-white flex items-center justify-between px-8 shadow-sm">
             {/* Page Title - will be dynamic based on route */}
             <div>
-                <h2 className="text-2xl font-semibold text-slate-dark">Dashboard</h2>
+                <h2 className="text-2xl font-semibold text-white">Dashboard</h2>
             </div>
 
             {/* Right Section */}
             <div className="flex items-center space-x-6">
                 {/* Notifications Icon */}
-                <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <button className="relative p-2 hover:bg-primary rounded-full transition-colors">
                     <span className="text-2xl">🔔</span>
                     <span className="absolute top-1 right-1 w-2 h-2 bg-warning rounded-full"></span>
                 </button>
@@ -33,20 +33,20 @@ const Navbar: React.FC = () => {
                 <div className="relative">
                     <button
                         onClick={() => setShowDropdown(!showDropdown)}
-                        className="flex items-center space-x-3 hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors"
+                        className="flex items-center space-x-3 hover:bg-primary rounded-lg px-3 py-2 transition-colors"
                     >
-                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-semibold">
+                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary font-semibold">
                             {user?.name?.charAt(0).toUpperCase() || 'U'}
                         </div>
                         <div className="text-left">
-                            <p className="text-sm font-medium text-slate-dark">
+                            <p className="text-sm font-medium text-white">
                                 {user?.name || 'User'}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-gray-200">
                                 {user?.email || 'user@example.com'}
                             </p>
                         </div>
-                        <span className="text-gray-400">▼</span>
+                        <span className="text-gray-200">▼</span>
                     </button>
 
                     {/* Dropdown Menu */}

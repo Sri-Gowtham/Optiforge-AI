@@ -31,8 +31,8 @@ export default function ProjectDetailPage() {
                         <div>
                             <h1 className="text-3xl font-bold text-slate-dark mb-2">{project.name}</h1>
                             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'active' ? 'bg-primary text-white' :
-                                    project.status === 'completed' ? 'bg-success text-white' :
-                                        'bg-amber text-white'
+                                project.status === 'completed' ? 'bg-success text-white' :
+                                    'bg-amber text-white'
                                 }`}>
                                 {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                             </span>
@@ -48,11 +48,11 @@ export default function ProjectDetailPage() {
                             <h2 className="text-xl font-semibold text-slate-dark mb-4">Project Details</h2>
                             <div className="space-y-3">
                                 <div>
-                                    <p className="text-sm text-gray-500">Description</p>
+                                    <p className="text-sm text-slate-medium">Description</p>
                                     <p className="text-slate-dark">{project.description}</p>
                                 </div>
                                 <div>
-                                    <p className="text-sm text-gray-500">Created</p>
+                                    <p className="text-sm text-slate-medium">Created</p>
                                     <p className="text-slate-dark">
                                         {new Date(project.createdAt).toLocaleDateString('en-US', {
                                             year: 'numeric',
@@ -62,7 +62,7 @@ export default function ProjectDetailPage() {
                                     </p>
                                 </div>
                                 <div>
-                                    <p className="text-sm text-gray-500">Project ID</p>
+                                    <p className="text-sm text-slate-medium">Project ID</p>
                                     <p className="text-slate-dark font-mono text-sm">{project.id}</p>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ export default function ProjectDetailPage() {
 
                         <Card>
                             <h2 className="text-xl font-semibold text-slate-dark mb-4">Design Files</h2>
-                            <div className="text-center py-8 text-gray-500">
+                            <div className="text-center py-8 text-slate-medium">
                                 <p>No design files uploaded yet</p>
                                 <Button variant="primary" className="mt-4">
                                     Upload Design
@@ -106,15 +106,15 @@ export default function ProjectDetailPage() {
                             <h2 className="text-xl font-semibold text-slate-dark mb-4">Project Stats</h2>
                             <div className="space-y-3">
                                 <div className="flex justify-between">
-                                    <span className="text-gray-600">Analyses</span>
+                                    <span className="text-slate-medium">Analyses</span>
                                     <span className="font-semibold">3</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-gray-600">Designs</span>
+                                    <span className="text-slate-medium">Designs</span>
                                     <span className="font-semibold">5</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-gray-600">Team Members</span>
+                                    <span className="text-slate-medium">Team Members</span>
                                     <span className="font-semibold">2</span>
                                 </div>
                             </div>

@@ -132,7 +132,7 @@ export default function ProfilePage() {
                         <div className="flex justify-between items-center py-3 border-b border-gray-200">
                             <div>
                                 <p className="font-medium text-slate-dark">Email Notifications</p>
-                                <p className="text-sm text-gray-600">Receive email updates about your projects</p>
+                                <p className="text-sm text-slate-medium">Receive email updates about your projects</p>
                             </div>
                             <label className="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" className="sr-only peer" defaultChecked />
@@ -143,7 +143,7 @@ export default function ProfilePage() {
                         <div className="flex justify-between items-center py-3 border-b border-gray-200">
                             <div>
                                 <p className="font-medium text-slate-dark">Two-Factor Authentication</p>
-                                <p className="text-sm text-gray-600">Add an extra layer of security</p>
+                                <p className="text-sm text-slate-medium">Add an extra layer of security</p>
                             </div>
                             <Button variant="secondary" size="sm">
                                 Enable
@@ -153,7 +153,7 @@ export default function ProfilePage() {
                         <div className="flex justify-between items-center py-3">
                             <div>
                                 <p className="font-medium text-warning">Delete Account</p>
-                                <p className="text-sm text-gray-600">Permanently delete your account and all data</p>
+                                <p className="text-sm text-slate-medium">Permanently delete your account and all data</p>
                             </div>
                             <Button variant="danger" size="sm">
                                 Delete

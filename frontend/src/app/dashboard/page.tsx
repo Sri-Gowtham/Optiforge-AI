@@ -69,11 +69,11 @@ export default function DashboardPage() {
                                     <Link href={`/projects/${project.id}`} className="font-medium text-slate-dark hover:text-primary">
                                         {project.name}
                                     </Link>
-                                    <p className="text-sm text-gray-500">{project.date}</p>
+                                    <p className="text-sm text-slate-medium">{project.date}</p>
                                 </div>
                                 <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'active' ? 'bg-primary text-white' :
-                                        project.status === 'completed' ? 'bg-success text-white' :
-                                            'bg-amber text-white'
+                                    project.status === 'completed' ? 'bg-success text-white' :
+                                        'bg-amber text-white'
                                     }`}>
                                     {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                                 </span>

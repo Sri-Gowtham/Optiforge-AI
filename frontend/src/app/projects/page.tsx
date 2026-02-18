@@ -66,17 +66,17 @@ export default function ProjectsPage() {
                 {/* Stats Summary */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <Card>
-                        <p className="text-sm text-gray-500 mb-1">Total Projects</p>
+                        <p className="text-sm text-slate-medium mb-1">Total Projects</p>
                         <p className="text-3xl font-bold text-slate-dark">{projects.length}</p>
                     </Card>
                     <Card>
-                        <p className="text-sm text-gray-500 mb-1">Active</p>
+                        <p className="text-sm text-slate-medium mb-1">Active</p>
                         <p className="text-3xl font-bold text-primary">
                             {projects.filter(p => p.status === 'active').length}
                         </p>
                     </Card>
                     <Card>
-                        <p className="text-sm text-gray-500 mb-1">Completed</p>
+                        <p className="text-sm text-slate-medium mb-1">Completed</p>
                         <p className="text-3xl font-bold text-success">
                             {projects.filter(p => p.status === 'completed').length}
                         </p>

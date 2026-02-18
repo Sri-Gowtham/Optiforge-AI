@@ -23,8 +23,19 @@ export default function LoginPage() {
         setLoading(true);
 
         try {
-            // API call will be connected to backend
-            const response = await api.post('/auth/login', formData);
+            // Use mock auth for development (when backend is not running)
+            const { mockLogin, shouldUseMockAuth } = await import('@/lib/mockAuth');
+
+            let response;
+            if (shouldUseMockAuth()) {
+                // Use mock authentication
+                const mockResponse = await mockLogin(formData);
+                response = { data: mockResponse };
+            } else {
+                // Use real API
+                response = await api.post('/auth/login', formData);
+            }
+
             const { token, user } = response.data;
 
             setToken(token);
@@ -46,7 +57,7 @@ export default function LoginPage() {
                     <Link href="/">
                         <h1 className="text-4xl font-bold text-primary mb-2">OptiForge AI</h1>
                     </Link>
-                    <p className="text-gray-600">Sign in to your account</p>
+                    <p className="text-slate-medium">Sign in to your account</p>
                 </div>
 
                 {/* Login Form */}
@@ -87,7 +98,7 @@ export default function LoginPage() {
                     </form>
 
                     <div className="text-center mt-6">
-                        <p className="text-gray-600">
+                        <p className="text-slate-medium">
                             Don&apos;t have an account?{' '}
                             <Link href="/signup" className="text-primary hover:underline font-medium">
                                 Sign up
@@ -98,7 +109,7 @@ export default function LoginPage() {
 
                 {/* Back to Home */}
                 <div className="text-center mt-6">
-                    <Link href="/" className="text-gray-600 hover:text-primary">
+                    <Link href="/" className="text-slate-medium hover:text-primary">
                         ← Back to home
                     </Link>
                 </div>

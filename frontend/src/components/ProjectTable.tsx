@@ -30,7 +30,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
 
     return (
         <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-card shadow-md">
+            <table className="w-full bg-white rounded-card shadow-sm border border-gray-200">
                 <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
                         <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -58,7 +58,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                                     {project.name}
                                 </Link>
                             </td>
-                            <td className="px-6 py-4 text-gray-600">
+                            <td className="px-6 py-4 text-slate-medium">
                                 {project.description.substring(0, 50)}
                                 {project.description.length > 50 ? '...' : ''}
                             </td>
@@ -67,7 +67,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
                                     {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                                 </span>
                             </td>
-                            <td className="px-6 py-4 text-gray-600 text-sm">
+                            <td className="px-6 py-4 text-slate-medium text-sm">
                                 {formatDate(project.createdAt)}
                             </td>
                             <td className="px-6 py-4">
@@ -85,7 +85,7 @@ const ProjectTable: React.FC<ProjectTableProps> = ({ projects }) => {
 
             {projects.length === 0 && (
                 <div className="text-center py-12 bg-white">
-                    <p className="text-gray-500">No projects found</p>
+                    <p className="text-slate-medium">No projects found</p>
                 </div>
             )}
         </div>

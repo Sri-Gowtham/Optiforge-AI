@@ -48,7 +48,7 @@ export default function AIGeneratorPage() {
                     <h2 className="text-xl font-semibold text-slate-dark mb-4">
                         Describe Your Design Idea
                     </h2>
-                    <p className="text-gray-600 mb-6">
+                    <p className="text-slate-medium mb-6">
                         Let AI generate design specifications based on your description
                     </p>
 
@@ -75,14 +75,14 @@ export default function AIGeneratorPage() {
                         <h2 className="text-xl font-semibold text-slate-dark mb-4">
                             ✨ Generated Design
                         </h2>
-                        <p className="text-gray-600 mb-6">{generatedDesign.description}</p>
+                        <p className="text-slate-medium mb-6">{generatedDesign.description}</p>
 
                         <div className="bg-gray-50 rounded-lg p-6 mb-6">
                             <h3 className="font-semibold text-slate-dark mb-4">Specifications</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 {Object.entries(generatedDesign.specifications).map(([key, value]) => (
                                     <div key={key}>
-                                        <p className="text-sm text-gray-500 capitalize">{key}</p>
+                                        <p className="text-sm text-slate-medium capitalize">{key}</p>
                                         <p className="font-medium text-slate-dark">{value as string}</p>
                                     </div>
                                 ))}
