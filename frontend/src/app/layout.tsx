@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "OptiForge AI - Design Optimization Platform",
-  description: "AI-powered product design optimization platform for better designs",
+  title: "OptiForge AI",
+  description: "AI-powered product design optimization",
 };
 
 export default function RootLayout({
@@ -13,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {children}
-      </body>
+      <body className="bg-slate-50 text-slate-900">{children}</body>
     </html>
   );
 }
