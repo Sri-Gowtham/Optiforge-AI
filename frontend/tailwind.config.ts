@@ -38,6 +38,7 @@ const config: Config = {
       },
       boxShadow: {
         card: "0 1px 3px rgba(0,0,0,0.08)",
+        "card-soft": "0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
       },
     },
   },
