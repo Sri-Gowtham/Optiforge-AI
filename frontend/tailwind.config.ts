@@ -21,6 +21,8 @@ const config: Config = {
         },
         "text-dark": "#1F2937",
         "text-medium": "#374151",
+        "text-light": "#6B7280",
+        navy: "#1E3A5F",
         success: "#10B981",
         warning: "#EF4444",
         amber: "#F59E0B",
@@ -33,6 +35,9 @@ const config: Config = {
       },
       borderRadius: {
         card: "12px",
+      },
+      boxShadow: {
+        card: "0 1px 3px rgba(0,0,0,0.08)",
       },
     },
   },
