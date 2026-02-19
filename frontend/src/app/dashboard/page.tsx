@@ -1,162 +1,163 @@
 "use client";
 
 import DashboardLayout from "@/components/DashboardLayout";
-import Link from "next/link";
 
-const stats = [
-    {
-        label: "Total Projects",
-        value: "24",
-        change: "+3 this month",
-        positive: true,
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-            </svg>
-        ),
-    },
-    {
-        label: "Active Designs",
-        value: "58",
-        change: "+12 this week",
-        positive: true,
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z" />
-            </svg>
-        ),
-    },
-    {
-        label: "Analyses Run",
-        value: "142",
-        change: "+28 this month",
-        positive: true,
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-        ),
-    },
+/* ── Metric data ── */
+const metrics = [
     {
         label: "Optimization Score",
         value: "87%",
-        change: "+5% improvement",
+        change: "+5.2%",
         positive: true,
         icon: (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
         ),
+        accent: "bg-green-50 text-success",
+    },
+    {
+        label: "Total Savings",
+        value: "$48.2K",
+        change: "+12.3%",
+        positive: true,
+        icon: (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        ),
+        accent: "bg-primary-50 text-primary",
+    },
+    {
+        label: "Active Issues",
+        value: "12",
+        change: "-3",
+        positive: true,
+        icon: (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+        ),
+        accent: "bg-amber-50 text-amber",
     },
 ];
 
-const recentProjects = [
-    { id: "1", name: "Automotive Bracket V2", status: "active", designs: 8, lastUpdated: "2 hours ago" },
-    { id: "2", name: "Aerospace Wing Rib", status: "completed", designs: 12, lastUpdated: "1 day ago" },
-    { id: "3", name: "Consumer Electronics Casing", status: "active", designs: 5, lastUpdated: "3 days ago" },
-    { id: "4", name: "Medical Implant Frame", status: "pending", designs: 3, lastUpdated: "5 days ago" },
-    { id: "5", name: "Industrial Gear Housing", status: "active", designs: 7, lastUpdated: "1 week ago" },
+/* ── Issues table data ── */
+const issues = [
+    { id: "ISS-001", title: "High stress concentration on bracket node", severity: "critical", component: "Automotive Bracket V2", status: "open" },
+    { id: "ISS-002", title: "Material thickness below safety margin", severity: "warning", component: "Aerospace Wing Rib", status: "open" },
+    { id: "ISS-003", title: "Thermal dissipation inefficiency detected", severity: "warning", component: "Electronics Casing", status: "in-progress" },
+    { id: "ISS-004", title: "Weight exceeds target by 8%", severity: "info", component: "Medical Implant Frame", status: "open" },
+    { id: "ISS-005", title: "Fatigue cycle count below threshold", severity: "critical", component: "Industrial Gear Housing", status: "resolved" },
 ];
 
-const recentActivity = [
-    { action: "Analysis completed", project: "Automotive Bracket V2", time: "2 hours ago", type: "success" },
-    { action: "New design uploaded", project: "Aerospace Wing Rib", time: "4 hours ago", type: "info" },
-    { action: "Optimization failed", project: "Medical Implant Frame", time: "1 day ago", type: "error" },
-    { action: "Project created", project: "Industrial Gear Housing", time: "2 days ago", type: "info" },
-];
+const severityColors: Record<string, string> = {
+    critical: "bg-red-50 text-red-600",
+    warning: "bg-amber-50 text-amber",
+    info: "bg-blue-50 text-primary",
+};
 
 const statusColors: Record<string, string> = {
-    active: "bg-green-50 text-success",
-    completed: "bg-blue-50 text-primary",
-    pending: "bg-amber-50 text-amber",
+    open: "bg-red-50 text-red-600",
+    "in-progress": "bg-amber-50 text-amber",
+    resolved: "bg-green-50 text-success",
 };
+
+/* ── AI Suggestions ── */
+const suggestions = [
+    {
+        title: "Reduce bracket node thickness",
+        description: "Reducing node thickness by 2mm at junction C3 could lower stress concentration by 18% while maintaining structural integrity.",
+        impact: "High",
+        impactColor: "text-success",
+    },
+    {
+        title: "Switch to titanium alloy Ti-6Al-4V",
+        description: "Material change would reduce weight by 12% and improve fatigue resistance for the implant frame.",
+        impact: "Medium",
+        impactColor: "text-primary",
+    },
+    {
+        title: "Add thermal vias to casing layout",
+        description: "Placing 6 additional thermal vias along the heat sink path improves dissipation efficiency by 22%.",
+        impact: "High",
+        impactColor: "text-success",
+    },
+];
+
+/* ── Cost comparison chart placeholder bars ── */
+const costData = [
+    { label: "Material", before: 85, after: 62 },
+    { label: "Manufacturing", before: 72, after: 58 },
+    { label: "Assembly", before: 45, after: 32 },
+    { label: "Testing", before: 38, after: 30 },
+    { label: "Overhead", before: 28, after: 22 },
+];
 
 export default function DashboardPage() {
     return (
         <DashboardLayout title="Dashboard" subtitle="Overview of your design optimization workspace">
-            {/* Quick Actions */}
-            <div className="flex items-center gap-3 mb-8">
-                <Link
-                    href="/projects"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition-colors"
-                >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
-                    New Project
-                </Link>
-                <Link
-                    href="/analysis"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-text-dark text-sm font-medium rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
-                >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10" />
-                    </svg>
-                    Run Analysis
-                </Link>
-            </div>
 
-            {/* KPI Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {stats.map((stat) => (
+            {/* ── Metric Cards ── */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                {metrics.map((m) => (
                     <div
-                        key={stat.label}
-                        className="bg-white rounded-card border border-gray-200 p-6"
+                        key={m.label}
+                        className="bg-white rounded-card shadow-card-soft p-6 flex items-start justify-between"
                     >
-                        <div className="flex items-start justify-between">
-                            <div>
-                                <p className="text-sm text-text-medium font-medium">{stat.label}</p>
-                                <p className="text-2xl font-semibold text-text-dark mt-1">{stat.value}</p>
-                            </div>
-                            <div className="p-2 bg-primary-50 text-primary rounded-lg">
-                                {stat.icon}
-                            </div>
+                        <div>
+                            <p className="text-sm text-text-medium font-medium">{m.label}</p>
+                            <p className="text-3xl font-semibold text-text-dark mt-1 tracking-tight">{m.value}</p>
+                            <p className={`text-xs font-medium mt-2 flex items-center gap-1 ${m.positive ? "text-success" : "text-warning"}`}>
+                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d={m.positive ? "M5 10l7-7m0 0l7 7m-7-7v18" : "M19 14l-7 7m0 0l-7-7m7 7V3"} />
+                                </svg>
+                                {m.change} from last month
+                            </p>
                         </div>
-                        <p className="text-xs text-success font-medium mt-3 flex items-center gap-1">
-                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                            </svg>
-                            {stat.change}
-                        </p>
+                        <div className={`p-3 rounded-xl ${m.accent}`}>
+                            {m.icon}
+                        </div>
                     </div>
                 ))}
             </div>
 
-            {/* Main content grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Recent Projects — spans 2 cols */}
-                <div className="lg:col-span-2 bg-white rounded-card border border-gray-200">
-                    <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-                        <h2 className="text-sm font-semibold text-text-dark">Recent Projects</h2>
-                        <Link href="/projects" className="text-xs text-primary font-medium hover:underline">
-                            View all
-                        </Link>
+            {/* ── Issues Table + Cost Comparison ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+
+                {/* Issues Table — 2 cols */}
+                <div className="lg:col-span-2 bg-white rounded-card shadow-card-soft">
+                    <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                        <h2 className="text-sm font-semibold text-text-dark">Active Issues</h2>
+                        <span className="text-xs text-text-light">{issues.filter((i) => i.status !== "resolved").length} open</span>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
                                 <tr className="border-b border-gray-100">
-                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Project</th>
+                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">ID</th>
+                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Issue</th>
+                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Severity</th>
+                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Component</th>
                                     <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Status</th>
-                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Designs</th>
-                                    <th className="text-left text-xs font-medium text-text-medium px-6 py-3">Last Updated</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {recentProjects.map((project) => (
-                                    <tr key={project.id} className="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
+                                {issues.map((issue) => (
+                                    <tr key={issue.id} className="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
+                                        <td className="px-6 py-3.5 text-xs font-mono text-text-light">{issue.id}</td>
+                                        <td className="px-6 py-3.5 text-sm text-text-dark font-medium max-w-[260px] truncate">{issue.title}</td>
                                         <td className="px-6 py-3.5">
-                                            <Link href={`/projects/${project.id}`} className="text-sm font-medium text-text-dark hover:text-primary transition-colors">
-                                                {project.name}
-                                            </Link>
-                                        </td>
-                                        <td className="px-6 py-3.5">
-                                            <span className={`inline-block px-2.5 py-1 text-xs font-medium rounded-full capitalize ${statusColors[project.status]}`}>
-                                                {project.status}
+                                            <span className={`inline-block px-2.5 py-1 text-xs font-medium rounded-full capitalize ${severityColors[issue.severity]}`}>
+                                                {issue.severity}
                                             </span>
                                         </td>
-                                        <td className="px-6 py-3.5 text-sm text-text-medium">{project.designs}</td>
-                                        <td className="px-6 py-3.5 text-sm text-text-medium">{project.lastUpdated}</td>
+                                        <td className="px-6 py-3.5 text-sm text-text-medium">{issue.component}</td>
+                                        <td className="px-6 py-3.5">
+                                            <span className={`inline-block px-2.5 py-1 text-xs font-medium rounded-full capitalize ${statusColors[issue.status]}`}>
+                                                {issue.status.replace("-", " ")}
+                                            </span>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -164,30 +165,87 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
-                {/* Recent Activity */}
-                <div className="bg-white rounded-card border border-gray-200">
-                    <div className="px-6 py-4 border-b border-gray-200">
-                        <h2 className="text-sm font-semibold text-text-dark">Recent Activity</h2>
+                {/* Cost Comparison Chart Placeholder */}
+                <div className="bg-white rounded-card shadow-card-soft">
+                    <div className="px-6 py-4 border-b border-gray-100">
+                        <h2 className="text-sm font-semibold text-text-dark">Cost Comparison</h2>
+                        <p className="text-xs text-text-light mt-0.5">Before vs After optimization</p>
                     </div>
-                    <div className="p-4 space-y-1">
-                        {recentActivity.map((item, i) => (
-                            <div key={i} className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                                <div
-                                    className={`mt-0.5 w-2 h-2 rounded-full shrink-0 ${item.type === "success"
-                                            ? "bg-success"
-                                            : item.type === "error"
-                                                ? "bg-warning"
-                                                : "bg-primary"
-                                        }`}
-                                />
-                                <div className="min-w-0">
-                                    <p className="text-sm text-text-dark font-medium">{item.action}</p>
-                                    <p className="text-xs text-text-medium mt-0.5">{item.project}</p>
-                                    <p className="text-xs text-gray-400 mt-0.5">{item.time}</p>
+                    <div className="p-6 space-y-4">
+                        {costData.map((item) => (
+                            <div key={item.label}>
+                                <div className="flex items-center justify-between mb-1.5">
+                                    <span className="text-xs font-medium text-text-medium">{item.label}</span>
+                                    <span className="text-xs text-text-light">
+                                        ${item.before}K → ${item.after}K
+                                    </span>
+                                </div>
+                                {/* Before bar */}
+                                <div className="w-full h-2 bg-gray-100 rounded-full mb-1">
+                                    <div
+                                        className="h-2 bg-gray-300 rounded-full transition-all duration-500"
+                                        style={{ width: `${item.before}%` }}
+                                    />
+                                </div>
+                                {/* After bar */}
+                                <div className="w-full h-2 bg-gray-100 rounded-full">
+                                    <div
+                                        className="h-2 bg-primary rounded-full transition-all duration-500"
+                                        style={{ width: `${item.after}%` }}
+                                    />
                                 </div>
                             </div>
                         ))}
+                        {/* Legend */}
+                        <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
+                            <div className="flex items-center gap-1.5">
+                                <div className="w-3 h-2 bg-gray-300 rounded-full" />
+                                <span className="text-xs text-text-light">Before</span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                                <div className="w-3 h-2 bg-primary rounded-full" />
+                                <span className="text-xs text-text-light">After</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            {/* ── AI Suggestions Panel ── */}
+            <div className="bg-white rounded-card shadow-card-soft">
+                <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                        <div className="p-1.5 bg-primary-50 rounded-lg text-primary">
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h2 className="text-sm font-semibold text-text-dark">AI Suggestions</h2>
+                    </div>
+                    <span className="text-xs font-medium text-primary bg-primary-50 px-2.5 py-1 rounded-full">
+                        {suggestions.length} new
+                    </span>
+                </div>
+                <div className="divide-y divide-gray-100">
+                    {suggestions.map((s, i) => (
+                        <div key={i} className="px-6 py-4 flex items-start gap-4 hover:bg-gray-50/50 transition-colors">
+                            <div className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-lg bg-primary-50 text-primary flex items-center justify-center text-xs font-bold">
+                                {i + 1}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <h3 className="text-sm font-semibold text-text-dark">{s.title}</h3>
+                                    <span className={`text-xs font-medium ${s.impactColor}`}>
+                                        {s.impact} Impact
+                                    </span>
+                                </div>
+                                <p className="text-xs text-text-medium leading-relaxed">{s.description}</p>
+                            </div>
+                            <button className="flex-shrink-0 px-3 py-1.5 text-xs font-medium text-primary bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors">
+                                Apply
+                            </button>
+                        </div>
+                    ))}
                 </div>
             </div>
         </DashboardLayout>

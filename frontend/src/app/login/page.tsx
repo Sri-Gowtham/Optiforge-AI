@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter();
 
     return (
         <div className="min-h-screen bg-bg-page flex items-center justify-center px-4 py-12">
@@ -39,7 +41,7 @@ export default function LoginPage() {
 
                 {/* ── Card ── */}
                 <div className="bg-white rounded-card shadow-card-soft p-8 sm:p-10">
-                    <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                    <form onSubmit={(e) => { e.preventDefault(); router.push("/dashboard"); }} className="space-y-6">
 
                         {/* Email */}
                         <div>
