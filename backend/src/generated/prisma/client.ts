@@ -42,3 +42,18 @@ export { Prisma }
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Project
+ * 
+ */
+export type Project = Prisma.ProjectModel
+/**
+ * Model Analysis
+ * 
+ */
+export type Analysis = Prisma.AnalysisModel
+/**
+ * Model Suggestion
+ * 
+ */
+export type Suggestion = Prisma.SuggestionModel

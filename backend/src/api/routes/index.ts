@@ -1,14 +1,19 @@
 import { Router, Request, Response } from 'express';
+import authRoutes from './auth.routes';
 
 const router = Router();
 
-// Health check
+// ─── Health Check ─────────────────────────────────────────
 router.get('/health', (_req: Request, res: Response) => {
-    res.status(200).json({ status: 'OK' });
+    res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Future route registrations go here
-// router.use('/auth', authRoutes);
+// ─── Auth Routes ──────────────────────────────────────────
+router.use('/auth', authRoutes);
+
+// ─── Future Routes ────────────────────────────────────────
 // router.use('/projects', projectRoutes);
+// router.use('/analysis', analysisRoutes);
 
 export default router;
+

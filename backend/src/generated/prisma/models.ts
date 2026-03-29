@@ -9,4 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User'
+export type * from './models/Project'
+export type * from './models/Analysis'
+export type * from './models/Suggestion'
 export type * from './commonInputTypes'
