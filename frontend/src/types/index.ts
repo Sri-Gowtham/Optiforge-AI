@@ -2,7 +2,7 @@
 
 export interface User {
     id: string;
-    name: string;
+    name?: string;
     email: string;
     createdAt: string;
 }
@@ -11,30 +11,47 @@ export interface Project {
     id: string;
     name: string;
     description: string;
-    status: 'active' | 'completed' | 'pending';
     createdAt: string;
     userId: string;
 }
 
-export interface Design {
-    id: string;
-    projectId: string;
-    type: 'manual' | 'ai-generated';
-    specifications: Record<string, unknown>;
-    createdAt: string;
+export interface AISuggestion {
+    title: string;
+    description: string;
+    severity: 'HIGH' | 'MEDIUM' | 'LOW';
+    impact: string;
 }
 
 export interface Analysis {
     id: string;
     projectId: string;
-    designId: string;
-    status: 'pending' | 'processing' | 'completed' | 'failed';
-    results: Record<string, unknown>;
+    projectName: string;
+    score: number;
+    costEstimate: number;
+    issuesCount: number;
     createdAt: string;
-    completedAt?: string;
+    suggestions?: AISuggestion[];
+}
+
+export interface DashboardStats {
+    totalProjects: number;
+    totalAnalyses: number;
+    averageScore: number;
+    recentAnalyses: {
+        id: string;
+        projectName: string;
+        score: number;
+        createdAt: string;
+    }[];
+    scoreDistribution: {
+        high: number;
+        medium: number;
+        low: number;
+    };
 }
 
 export interface AuthResponse {
+    success: boolean;
     user: User;
     token: string;
 }

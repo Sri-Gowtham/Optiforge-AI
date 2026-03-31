@@ -3,12 +3,30 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { authService } from "@/services/auth.service";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setError(null);
+
+        try {
+            await authService.login({ email, password });
+            router.push("/dashboard");
+        } catch (err: any) {
+            setError(err.response?.data?.message || "Invalid email or password");
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-bg-page flex items-center justify-center px-4 py-12">
@@ -41,7 +59,14 @@ export default function LoginPage() {
 
                 {/* ── Card ── */}
                 <div className="bg-white rounded-card shadow-card-soft p-8 sm:p-10">
-                    <form onSubmit={(e) => { e.preventDefault(); router.push("/dashboard"); }} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+
+                        {/* Error Message */}
+                        {error && (
+                            <div className="p-3 text-xs font-medium text-red-600 bg-red-50 rounded-lg border border-red-100">
+                                {error}
+                            </div>
+                        )}
 
                         {/* Email */}
                         <div>
@@ -115,12 +140,13 @@ export default function LoginPage() {
                         {/* Submit */}
                         <button
                             type="submit"
-                            className="w-full h-11 bg-primary text-white text-sm font-semibold rounded-lg
+                            disabled={isLoading}
+                            className={`w-full h-11 bg-primary text-white text-sm font-semibold rounded-lg
                 hover:bg-primary-dark active:scale-[0.98]
                 shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/30
-                transition-all duration-150 mt-1"
+                transition-all duration-150 mt-1 ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}
                         >
-                            Sign In
+                            {isLoading ? "Signing in..." : "Sign In"}
                         </button>
                     </form>
                 </div>

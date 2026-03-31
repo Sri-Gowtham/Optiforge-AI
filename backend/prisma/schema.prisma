@@ -15,6 +15,11 @@ enum Severity {
   HIGH
 }
 
+enum SuggestionSource {
+  RULE_BASED
+  AI
+}
+
 // ─── Models ───────────────────────────────────────────────
 
 model User {
@@ -58,13 +63,14 @@ model Analysis {
 }
 
 model Suggestion {
-  id          String    @id @default(uuid())
-  analysisId  String    @map("analysis_id")
+  id          String           @id @default(uuid())
+  analysisId  String           @map("analysis_id")
   title       String
   description String
   severity    Severity
   impact      String
-  createdAt   DateTime  @default(now()) @map("created_at")
+  source      SuggestionSource @default(RULE_BASED)
+  createdAt   DateTime         @default(now()) @map("created_at")
 
   analysis Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
 

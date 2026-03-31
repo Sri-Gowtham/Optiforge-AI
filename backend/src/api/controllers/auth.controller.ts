@@ -9,6 +9,7 @@ export async function register(
     next: NextFunction
 ): Promise<void> {
     try {
+        console.log('Register request body:', req.body);
         const { email, password } = req.body as { email?: string; password?: string };
 
         if (!email || !password) {
@@ -36,8 +37,12 @@ export async function register(
                 user: result.user,
             },
         });
-    } catch (err) {
-        next(err);
+    } catch (err: any) {
+        console.error('Register error:', err.message);
+        res.status(err.statusCode || 500).json({
+            success: false,
+            error: err.message || 'Internal Server Error',
+        });
     }
 }
 

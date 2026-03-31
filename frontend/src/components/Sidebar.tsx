@@ -79,8 +79,17 @@ const navItems = [
     },
 ];
 
+import { authService } from "@/services/auth.service";
+import { getCurrentUser } from "@/lib/auth";
+
 export default function Sidebar() {
     const pathname = usePathname();
+    const user = getCurrentUser();
+
+    const handleLogout = (e: React.MouseEvent) => {
+        e.preventDefault();
+        authService.logout();
+    };
 
     return (
         <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col z-30">
@@ -121,17 +130,17 @@ export default function Sidebar() {
             <div className="border-t border-gray-200 p-4">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-primary-50 flex items-center justify-center text-primary font-semibold text-sm">
-                        JD
+                        {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-text-dark truncate">John Doe</p>
-                        <p className="text-xs text-text-medium truncate">john@optiforge.ai</p>
+                        <p className="text-sm font-medium text-text-dark truncate">{user?.name || 'User'}</p>
+                        <p className="text-xs text-text-medium truncate">{user?.email || 'user@optiforge.ai'}</p>
                     </div>
-                    <Link href="/login" className="text-gray-400 hover:text-text-dark transition-colors">
+                    <button onClick={handleLogout} className="text-gray-400 hover:text-text-dark transition-colors">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
-                    </Link>
+                    </button>
                 </div>
             </div>
         </aside>
